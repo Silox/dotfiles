@@ -32,7 +32,6 @@ export ANDROID_HOME=~/android-sdks/
 export EDITOR=vim
 export GEM_HOME=$HOME/.gem
 export MODULEPATH=$HOME/.local/easybuild/modules/all
-source /usr/share/modules/init/zsh
 
 alias tmux="tmux -2"
 
