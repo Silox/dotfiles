@@ -232,6 +232,9 @@ augroup END
 " Prolog {{{
   au BufRead *.pl set ft=prolog
 " }}}
+" Php {{{
+  au BufRead *.inc set ft=php
+" }}}
 " }}}
 " Mappings {{{
 nnoremap <silent> <C-l> :noh<CR><C-L>
