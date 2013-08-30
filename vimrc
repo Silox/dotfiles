@@ -233,7 +233,10 @@ augroup END
   au BufRead *.pl set ft=prolog
 " }}}
 " Php {{{
+  au BufRead *.inc setlocal ts=4 sw=4 sts=4
   au BufRead *.inc set ft=php
+  au BufRead *.module setlocal ts=4 sw=4 sts=4
+  au BufRead *.module set ft=php
 " }}}
 " }}}
 " Mappings {{{
