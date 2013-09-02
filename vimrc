@@ -239,6 +239,10 @@ augroup END
   au BufRead *.module set ft=php
 " }}}
 " }}}
+" HTML {{{
+  au BufRead *.html setlocal ts=4 sw=4 sts=4
+  au BufRead *.html set ft=html
+" }}}
 " Mappings {{{
 nnoremap <silent> <C-l> :noh<CR><C-L>
 " edit and source vimrc easily
