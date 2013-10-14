@@ -21,10 +21,8 @@ export TMUX_POWERLINE_SEG_WEATHER_LOCATION="970013"
 autoload colors
 colors
 
-source ~/.dotfiles/zsh/zshrc.sh
 setopt prompt_subst
-ZSH_THEME_GIT_PROMPT_PREFIX=" ("
-PROMPT='[%T]%{$fg[red]%} %n@%m %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%}$(git_super_status) %(?.✔.✗) '
+PROMPT='[%T]%{$fg[red]%} %n@%m %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%} %(?.✔.✗) '
 export PATH="/home/tnaessens/.cabal/bin:.:/usr/local/bin/:/usr/local/sbin/:/home/tnaessens/android-sdks/platform-tools/:$PATH"
 export PATH=/home/tnaessens/.gem/bin:$PATH
 export PATH=/home/tnaessens/Programs/gradle-1.7/bin:$PATH
@@ -48,8 +46,8 @@ else
   eval $(dircolors)
 fi
 
-if [[ "$TERM" != "screen-256color" ]]; then
-  tmux
-  exit
-fi
+#if [[ "$TERM" != "screen-256color" ]]; then
+#  tmux
+#  exit
+#fi
 
