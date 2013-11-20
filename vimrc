@@ -15,6 +15,7 @@ Bundle 'Shougo/vimproc'
 Bundle 'Shougo/vimshell'
 Bundle 'tpope/vim-commentary'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'scrooloose/nerdcommenter'
 
 Bundle 'eagletmt/ghcmod-vim'
 Bundle 'ujihisa/neco-ghc'

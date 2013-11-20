@@ -25,7 +25,9 @@ setopt prompt_subst
 PROMPT='[%T]%{$fg[red]%} %n@%m %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%} %(?.✔.✗) '
 export PATH="/home/tnaessens/.cabal/bin:.:/usr/local/bin/:/usr/local/sbin/:/home/tnaessens/android-sdks/platform-tools/:$PATH"
 export PATH=/home/tnaessens/.gem/bin:$PATH
+export PATH=/home/tnaessens/android-sdks/tools:$PATH
 export PATH=/home/tnaessens/Programs/gradle-1.7/bin:$PATH
+export PATH=/home/tnaessens/Programs/pin-2.13-61206-gcc.4.4.7-linux:$PATH
 export ANDROID_HOME=~/android-sdks/
 export EDITOR=vim
 export GEM_HOME=$HOME/.gem
