@@ -34,6 +34,7 @@ export GEM_HOME=$HOME/.gem
 export MODULEPATH=$HOME/.local/easybuild/modules/all
 
 alias tmux="tmux -2"
+alias wow="hub status"
 
 PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
@@ -53,3 +54,6 @@ fi
 #  exit
 #fi
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
