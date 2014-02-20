@@ -31,14 +31,7 @@ mkdir -p $HOME/.vim/tmp/{backup,swap}
 
 setup vimrc "$HOME/.vimrc"
 setup zshrc "$HOME/.zshrc"
-setup tmux.conf "$HOME/.tmux.conf"
 setup gitconfig "$HOME/.gitconfig"
-
-
-echo "Cloning tmux-powerline into ~/.tmux"
-rm -rf ~/.tmux/powerline
-mkdir -p ~/.tmux/powerline
-git clone http://github.com/Silox/tmux-powerline ~/.tmux/powerline
 
 echo "updating Bundles"
 vim +BundleInstall! +qall

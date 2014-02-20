@@ -16,44 +16,14 @@ bindkey -e
 # End of lines configured by zsh-newuser-install
 export LANG='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
-export TMUX_POWERLINE_SEG_WEATHER_LOCATION="970013"
 
 autoload colors
 colors
 
 setopt prompt_subst
 PROMPT='[%T]%{$fg[red]%} %n@%m %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%} %(?.✔.✗) '
-export PATH="/home/tnaessens/.cabal/bin:.:/usr/local/bin/:/usr/local/sbin/:/home/tnaessens/android-sdks/platform-tools/:$PATH"
-export PATH=/home/tnaessens/.gem/bin:$PATH
-export PATH=/home/tnaessens/android-sdks/tools:$PATH
-export PATH=/home/tnaessens/Programs/gradle-1.7/bin:$PATH
-export PATH=/home/tnaessens/Programs/pin-2.13-61206-gcc.4.4.7-linux:$PATH
-export ANDROID_HOME=~/android-sdks/
 export EDITOR=vim
-export GEM_HOME=$HOME/.gem
-export MODULEPATH=$HOME/.local/easybuild/modules/all
 
-alias tmux="tmux -2"
 alias wow="hub status"
 
-PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
-
-# Mac specific thingies
-platform=$(uname -a)
-if [[ $platform =~ "Darwin" ]]; then
-  eval "$(rbenv init -)"
-  alias vim='mvim -v'
-#  export CLICOLOR=1
-else
-  alias ls="ls --color=auto"
-  eval $(dircolors)
-fi
-
-#if [[ "$TERM" != "screen-256color" ]]; then
-#  tmux
-#  exit
-#fi
-
-
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

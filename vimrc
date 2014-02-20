@@ -1,5 +1,3 @@
-call pathogen#infect()
-
 " Bundles {{{
 set nocompatible
 filetype off
@@ -26,8 +24,6 @@ Bundle 'jayferd/ragel.vim'
 Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Bundle 'mattn/gist-vim'
 Bundle 'mattn/webapi-vim'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'airblade/vim-gitgutter'
 filetype plugin indent on
 " }}}
 " Leader {{{
@@ -312,11 +308,6 @@ function! PipeToBc()
   let @@ = saved_unnamed_register
 endfunction
 nnoremap <leader>bc :call PipeToBc()<CR>
-" }}}
-" VBundle {{{
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
 " }}}
 
 " for some reason vim searches for something
