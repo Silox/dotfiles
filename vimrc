@@ -5,6 +5,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
+Bundle 'altercation/vim-colors-solarized'
 Bundle 'scrooloose/nerdtree'
 Bundle 'fugitive.vim'
 Bundle 'Lokaltog/vim-powerline'
@@ -12,7 +13,6 @@ Bundle 'mileszs/ack.vim'
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/vimshell'
 Bundle 'tpope/vim-commentary'
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/syntastic'
 
@@ -231,15 +231,15 @@ augroup END
   au BufRead *.pl set ft=prolog
 " }}}
 " Php {{{
-  au BufRead *.inc setlocal ts=4 sw=4 sts=4
+  au BufRead *.inc setlocal ts=2 sw=2 sts=2
   au BufRead *.inc set ft=php
-  au BufRead *.module setlocal ts=4 sw=4 sts=4
+  au BufRead *.module setlocal ts=2 sw=2 sts=2
   au BufRead *.module set ft=php
 " }}}
-" }}}
 " HTML {{{
-  au BufRead *.html setlocal ts=4 sw=4 sts=4
+  au BufRead *.html setlocal ts=2 sw=2 sts=2
   au BufRead *.html set ft=html
+" }}}
 " }}}
 " Mappings {{{
 nnoremap <silent> <C-l> :noh<CR><C-L>
