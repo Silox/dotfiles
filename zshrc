@@ -20,10 +20,27 @@ export LC_ALL='en_US.UTF-8'
 autoload colors
 colors
 
+# ls colors
+alias ls='ls -G'
+
 setopt prompt_subst
 PROMPT='[%T]%{$fg[red]%} %n@%m %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%} %(?.✔.✗) '
 export EDITOR=vim
 
 alias wow="hub status"
 
+alias mysqlstart='sudo /usr/local/mysql/support-files/mysql.server start'
+alias mysqlstop='sudo /usr/local/mysql/support-files/mysql.server stop'
+
+# OSX
+## Same pwd on tab
+precmd () {print -Pn "\e]2; %~/ \a"}
+preexec () {print -Pn "\e]2; %~/ \a"}
+
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH=/usr/local/bin:$PATH
+export PATH=/Applications/Android\ Studio.app/sdk/tools:$PATH
+export PATH=/Applications/Android\ Studio.app/sdk/platform-tools:$PATH
+
+# added by travis gem
+[ -f /Users/silox/.travis/travis.sh ] && source /Users/silox/.travis/travis.sh

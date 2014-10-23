@@ -11,6 +11,7 @@ Bundle 'fugitive.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'mileszs/ack.vim'
 Bundle 'Shougo/vimproc'
+Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/vimshell'
 Bundle 'tpope/vim-commentary'
 Bundle 'scrooloose/nerdcommenter'
@@ -24,6 +25,11 @@ Bundle 'jayferd/ragel.vim'
 Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Bundle 'mattn/gist-vim'
 Bundle 'mattn/webapi-vim'
+
+Bundle 'groenewege/vim-less'
+Bundle 'hail2u/vim-css3-syntax'
+
+
 filetype plugin indent on
 " }}}
 " Leader {{{
@@ -46,7 +52,7 @@ nnoremap <leader>gt :Gstatus<cr>
 
 let NERDTreeIgnore = ['\.pyc$', '\.hi', '\.o']
 
-let g:Powerline_symbols = 'fancy'
+let g:Powerline_symbols = 'unicode'
 let g:haddock_browser="open"
 
 " }}}
@@ -186,6 +192,13 @@ augroup haskell
   au FileType haskell setlocal omnifunc=necoghc#omnifunc
 augroup END
 " }}}
+" JavaScript {{{
+augroup javascript
+  au!
+  au Filetype javascript setlocal ts=4 sw=4 sts=4
+
+augroup END
+" }}}
 " Java {{{
 augroup java
   au!
@@ -235,6 +248,8 @@ augroup END
   au BufRead *.inc set ft=php
   au BufRead *.module setlocal ts=2 sw=2 sts=2
   au BufRead *.module set ft=php
+  au BufRead *.php5 setlocal ts=2 sw=2 sts=2
+  au BufRead *.php5 set ft=php
 " }}}
 " HTML {{{
   au BufRead *.html setlocal ts=2 sw=2 sts=2
@@ -308,6 +323,9 @@ function! PipeToBc()
   let @@ = saved_unnamed_register
 endfunction
 nnoremap <leader>bc :call PipeToBc()<CR>
+" }}}
+" Unite {{{
+  nnoremap <leader><leader> :<C-u>Unite -start-insert file_rec/async<CR>
 " }}}
 
 " for some reason vim searches for something
