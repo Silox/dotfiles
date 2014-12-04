@@ -28,7 +28,7 @@ PROMPT='[%T]%{$fg[red]%} %n@%m %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%
 export EDITOR=vim
 
 alias wow="hub status"
-
+alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
 alias mysqlstart='sudo /usr/local/mysql/support-files/mysql.server start'
 alias mysqlstop='sudo /usr/local/mysql/support-files/mysql.server stop'
 

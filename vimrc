@@ -12,10 +12,11 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'mileszs/ack.vim'
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/neomru.vim'
 Bundle 'Shougo/vimshell'
-Bundle 'tpope/vim-commentary'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/syntastic'
+Bundle 'Raimondi/delimitMate'
 
 Bundle 'eagletmt/ghcmod-vim'
 Bundle 'ujihisa/neco-ghc'
@@ -28,6 +29,8 @@ Bundle 'mattn/webapi-vim'
 
 Bundle 'groenewege/vim-less'
 Bundle 'hail2u/vim-css3-syntax'
+
+Bundle 'Valloric/YouCompleteMe'
 
 
 filetype plugin indent on
@@ -47,12 +50,11 @@ let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_camel_case_completion = 1
 " Use underbar completion.
 let g:neocomplcache_enable_underbar_completion = 1
-nnoremap <leader><leader> :NERDTreeToggle<esc>
 nnoremap <leader>gt :Gstatus<cr>
 
 let NERDTreeIgnore = ['\.pyc$', '\.hi', '\.o']
 
-let g:Powerline_symbols = 'unicode'
+let g:Powerline_symbols = 'fancy'
 let g:haddock_browser="open"
 
 " }}}
@@ -79,7 +81,7 @@ set autoread " auto reload file on change
 set scrolloff=8 "keep 8 lines below/above cursor
 " }}}
 " Colorscheme {{{
-set t_Co=16
+set t_Co=256
 let g:solarized_termcolors=256
 let g:solarized_contrast="normal"
 let g:solarized_underline=0
@@ -325,7 +327,27 @@ endfunction
 nnoremap <leader>bc :call PipeToBc()<CR>
 " }}}
 " Unite {{{
+"
+  call unite#filters#matcher_default#use(['matcher_fuzzy'])
+  call unite#filters#sorter_default#use(['sorter_rank'])
+
   nnoremap <leader><leader> :<C-u>Unite -start-insert file_rec/async<CR>
+  nmap <leader>p :<C-u>Unite -buffer-name=files -start-insert file_rec/async<CR>
+  nmap <leader>m :<C-u>Unite -buffer-name=mru file_mru<CR>
+  nmap <leader>y :<C-u>Unite -buffer-name=yanks history/yank<CR>
+  nmap <leader>g :<C-u>Unite grep:.<CR>
+" }}}
+" Sync pastebuffers {{{
+if has ('unnamedplus')
+  set clipboard=unnamedplus
+else
+  set clipboard=unnamed
+end
+
+" }}}
+" Fancy selectors {{{
+  vnoremap > >gv
+  vnoremap < <gv
 " }}}
 
 " for some reason vim searches for something
