@@ -41,6 +41,7 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PATH=/usr/local/bin:$PATH
 export PATH=/Applications/Android\ Studio.app/sdk/tools:$PATH
 export PATH=/Applications/Android\ Studio.app/sdk/platform-tools:$PATH
+export CLASSPATH=/Users/silox/tla
 
 # added by travis gem
 [ -f /Users/silox/.travis/travis.sh ] && source /Users/silox/.travis/travis.sh

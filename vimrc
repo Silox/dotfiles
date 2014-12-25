@@ -257,6 +257,10 @@ augroup END
   au BufRead *.html setlocal ts=2 sw=2 sts=2
   au BufRead *.html set ft=html
 " }}}
+" TLA {{{
+  au BufRead *.tla set ft=tla
+  au BufRead *.cfg set ft=tlacfg
+" }}}
 " }}}
 " Mappings {{{
 nnoremap <silent> <C-l> :noh<CR><C-L>
