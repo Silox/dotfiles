@@ -37,11 +37,11 @@ alias mysqlstop='sudo /usr/local/mysql/support-files/mysql.server stop'
 precmd () {print -Pn "\e]2; %~/ \a"}
 preexec () {print -Pn "\e]2; %~/ \a"}
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-export PATH=/usr/local/bin:$PATH
-export PATH=/Applications/Android\ Studio.app/sdk/tools:$PATH
-export PATH=/Applications/Android\ Studio.app/sdk/platform-tools:$PATH
-export CLASSPATH=/Users/silox/tla
+export PATH=$PATH:/usr/local/bin
 
 # added by travis gem
 [ -f /Users/silox/.travis/travis.sh ] && source /Users/silox/.travis/travis.sh
+
+
+# rbenv
+eval "$(rbenv init -)"

@@ -32,7 +32,12 @@ ln -s $HOME/.dotfiles/vim/syntax $HOME/.vim/syntax
 
 setup vimrc "$HOME/.vimrc"
 setup zshrc "$HOME/.zshrc"
+setup tmux.conf "$HOME/.tmux.conf"
 setup gitconfig "$HOME/.gitconfig"
+
+
+echo "Cloning tmux-powerline into ~/.tmux"
+pip install powerline-status
 
 echo "updating Bundles"
 vim +BundleInstall! +qall
