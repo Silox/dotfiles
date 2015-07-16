@@ -207,9 +207,11 @@ augroup javascript
 augroup END
 " }}}
 " Java {{{
+au BufRead *.scala set ft=java
 augroup java
   au!
   au Filetype java setlocal ts=4 sw=4 sts=4
+  au BufRead *.g4 set ft=java
 
 augroup END
 " }}}
@@ -226,6 +228,7 @@ augroup END
 augroup ft_python
   au!
 
+  au BufRead *.py3 set ft=python
   au FileType python setlocal ts=4 sw=4 sts=4
   au FileType python setlocal wrap wrapmargin=2 textwidth=120 colorcolumn=+1
 
@@ -339,6 +342,9 @@ nnoremap <leader>bc :call PipeToBc()<CR>
 "
   call unite#filters#matcher_default#use(['matcher_fuzzy'])
   call unite#filters#sorter_default#use(['sorter_rank'])
+
+  call unite#sources#rec#define()
+  call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\.env')
 
   nnoremap <leader><leader> :<C-u>Unite -start-insert file_rec/async<CR>
   nmap <leader>p :<C-u>Unite -buffer-name=files -start-insert file_rec/async<CR>
@@ -483,6 +489,9 @@ nnoremap <leader>bc :call PipeToBc()<CR>
 " Fancy selectors {{{
   vnoremap > >gv
   vnoremap < <gv
+" }}}
+" NERDCommenter {{{
+  let NERDSpaceDelims = 1
 " }}}
 
 " for some reason vim searches for something

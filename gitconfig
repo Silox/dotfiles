@@ -1,11 +1,11 @@
 [user]
-	name = Tom Naessens
-	email = Tom.Naessens@UGent.be
+  name = Tom Naessens
+  email = Tom.Naessens@UGent.be
 [color]
   ui = true
 [core]
   editor = vim
-	excludesfile = /Users/silox/.gitignore_global
+  excludesfile = /Users/silox/.gitignore_global
 [alias]
   co = checkout
   unstage = reset HEAD --
@@ -14,6 +14,6 @@
 [help]
   autocorrect = 1
 [github]
-	user = Silox
+  user = Silox
 [hub]
-	host = github.ugent.be
+  host = github.ugent.be
