@@ -37,7 +37,8 @@ alias mysqlstop='sudo /usr/local/mysql/support-files/mysql.server stop'
 precmd () {print -Pn "\e]2; %~/ \a"}
 preexec () {print -Pn "\e]2; %~/ \a"}
 
-export PATH=$PATH:/usr/local/bin
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH=$PATH:$(ruby -e 'print Gem.user_dir')/bin:/usr/local/bin
 
 # added by travis gem
 [ -f /Users/silox/.travis/travis.sh ] && source /Users/silox/.travis/travis.sh
@@ -45,3 +46,7 @@ export PATH=$PATH:/usr/local/bin
 
 # rbenv
 eval "$(rbenv init -)"
+
+# pyenv
+#eval "$(pyenv init -)"
+#eval "$(pyenv virtualenv-init -)"

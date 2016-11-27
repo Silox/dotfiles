@@ -9,6 +9,7 @@ python from powerline.vim import setup as powerline_setup
 python powerline_setup()
 python del powerline_setup
 
+
 Bundle 'gmarik/vundle'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'scrooloose/nerdtree'
@@ -37,6 +38,12 @@ Bundle 'hail2u/vim-css3-syntax'
 
 Bundle 'Valloric/YouCompleteMe'
 
+Bundle 'klen/python-mode'
+
+Bundle 'tpope/vim-unimpaired'
+Bundle 'tpope/vim-obsession'
+
+Bundle 'fisadev/vim-isort'
 
 filetype plugin indent on
 " }}}
@@ -61,6 +68,9 @@ let NERDTreeIgnore = ['\.pyc$', '\.hi', '\.o']
 
 let g:Powerline_symbols = 'fancy'
 let g:haddock_browser="open"
+
+let g:pymode_options_max_line_length = 120
+let g:pymode_rope = 0
 
 " }}}
 " General options {{{
@@ -230,7 +240,7 @@ augroup ft_python
 
   au BufRead *.py3 set ft=python
   au FileType python setlocal ts=4 sw=4 sts=4
-  au FileType python setlocal wrap wrapmargin=2 textwidth=120 colorcolumn=+1
+  au FileType python setlocal wrap wrapmargin=2 textwidth=80 colorcolumn=+1
 
 augroup END
 " }}}
@@ -340,11 +350,11 @@ nnoremap <leader>bc :call PipeToBc()<CR>
 " }}}
 " Unite {{{
 "
-  call unite#filters#matcher_default#use(['matcher_fuzzy'])
-  call unite#filters#sorter_default#use(['sorter_rank'])
+  "call unite#filters#matcher_default#use(['matcher_fuzzy'])
+  "call unite#filters#sorter_default#use(['sorter_rank'])
 
-  call unite#sources#rec#define()
-  call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\.env')
+  "call unite#sources#rec#define()
+  "call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\.env')
 
   nnoremap <leader><leader> :<C-u>Unite -start-insert file_rec/async<CR>
   nmap <leader>p :<C-u>Unite -buffer-name=files -start-insert file_rec/async<CR>
