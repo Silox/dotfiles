@@ -50,3 +50,6 @@ eval "$(rbenv init -)"
 # pyenv
 #eval "$(pyenv init -)"
 #eval "$(pyenv virtualenv-init -)"
+
+# FZF
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'

@@ -1,49 +1,33 @@
-" Bundles {{{
+" Load up {{{
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=/usr/local/opt/fzf
 
 " Powerline init
 python from powerline.vim import setup as powerline_setup
 python powerline_setup()
 python del powerline_setup
+" }}}
+" Bundles {{{
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
 
-
-Bundle 'gmarik/vundle'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'scrooloose/nerdtree'
-Bundle 'fugitive.vim'
-Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
-Bundle 'mileszs/ack.vim'
-Bundle 'Shougo/vimproc'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/neomru.vim'
-Bundle 'Shougo/vimshell'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/syntastic'
-Bundle 'Raimondi/delimitMate'
-
-Bundle 'eagletmt/ghcmod-vim'
-Bundle 'ujihisa/neco-ghc'
-
-Bundle 'nginx.vim'
-Bundle 'jayferd/ragel.vim'
-Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
-Bundle 'mattn/gist-vim'
-Bundle 'mattn/webapi-vim'
-
-Bundle 'groenewege/vim-less'
-Bundle 'hail2u/vim-css3-syntax'
-
-Bundle 'Valloric/YouCompleteMe'
-
-Bundle 'klen/python-mode'
-
-Bundle 'tpope/vim-unimpaired'
-Bundle 'tpope/vim-obsession'
-
-Bundle 'fisadev/vim-isort'
+call plug#begin('~/.vim/plugged')
+Plug 'altercation/vim-colors-solarized'
+Plug 'scrooloose/nerdtree'
+Plug 'fugitive.vim'
+Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/syntastic'
+Plug 'Raimondi/delimitMate'
+Plug 'Valloric/YouCompleteMe'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-obsession'
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+call plug#end()
 
 filetype plugin indent on
 " }}}
@@ -292,6 +276,8 @@ nnoremap _md :set ft=markdown<CR>
 
 " open shell
 nnoremap <leader>sh :VimShellPop<CR>
+
+nnoremap <leader><leader> :FZF<CR>
 " }}}
 " Tab completion for commands {{{
 set wildmode=list:longest,list:full
@@ -334,34 +320,6 @@ endfunction
 
 " Quickly toggle between relativenumber and number
 noremap <leader>rr :call ToggleNumberRel()<CR>
-" }}}
-" Inline mathematics {{{
-function! PipeToBc()
-  let saved_unnamed_register = @@
-
-  silent execute 'r !echo ' . shellescape(getline('.')) . ' | bc'
-  normal! dw
-  execute "normal! kA = \<ESC>p"
-  normal! jdd
-
-  let @@ = saved_unnamed_register
-endfunction
-nnoremap <leader>bc :call PipeToBc()<CR>
-" }}}
-" Unite {{{
-"
-  "call unite#filters#matcher_default#use(['matcher_fuzzy'])
-  "call unite#filters#sorter_default#use(['sorter_rank'])
-
-  "call unite#sources#rec#define()
-  "call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\.env')
-
-  nnoremap <leader><leader> :<C-u>Unite -start-insert file_rec/async<CR>
-  nmap <leader>p :<C-u>Unite -buffer-name=files -start-insert file_rec/async<CR>
-  nmap <leader>m :<C-u>Unite -buffer-name=mru file_mru<CR>
-  nmap <leader>y :<C-u>Unite -buffer-name=yanks history/yank<CR>
-  nmap <leader>g :<C-u>Unite grep:.<CR>
-
 " }}}
 " Ignore patterns {{{
   " Don't display these kinds of files
@@ -442,59 +400,6 @@ nnoremap <leader>bc :call PipeToBc()<CR>
   let g:netrw_list_hide.='*/\.nx/**,*\.app'
   " }}}
 
-  " Unite source {{{
-  " try
-  "   " Set up some custom ignores
-  "   call unite#custom#source('file_rec/async',
-  "       \ 'ignore_pattern', join([
-  "       \ '\.DS_Store',
-  "       \ '\.tmp/',
-  "       \ '\.git/',
-  "       \ '\.gitkeep',
-  "       \ '\.hg/',
-  "       \ '\.tox',
-  "       \ '\.idea',
-  "       \ '\.pyc',
-  "       \ '\.png',
-  "       \ '\.gif',
-  "       \ '\.jpg',
-  "       \ '\.svg',
-  "       \ '\.eot',
-  "       \ '\.ttf',
-  "       \ '\.woff',
-  "       \ '\.ico',
-  "       \ '\.o',
-  "       \ '__pycache__',
-  "       \ '.env',
-  "       \ '.env*',
-  "       \ '.vagrant',
-  "       \ '_build',
-  "       \ 'dist',
-  "       \ '*.tar.gz',
-  "       \ '*.zip',
-  "       \ 'node_modules',
-  "       \ 'bower_components',
-  "       \ '.*\.egg',
-  "       \ '*.egg-info',
-  "       \ '.*egg-info.*',
-  "       \ 'git5/.*/review/',
-  "       \ 'google/obj/',
-  "       \ '\.webassets-cache/',
-  "       \ '\.sass-cache/',
-  "       \ '\.coverage/',
-  "       \ '\.m2/',
-  "       \ '\.activator/',
-  "       \ '\.composer/',
-  "       \ '\.cache/',
-  "       \ '\.npm/',
-  "       \ '\.node-gyp/',
-  "       \ '\.sbt/',
-  "       \ '\.ivy2/',
-  "       \ '\.local/activator/',
-  "       \ ], '\|'))
-  " catch
-  " endtry
-  " }}}
 " }}}
 " Fancy selectors {{{
   vnoremap > >gv
