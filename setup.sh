@@ -21,7 +21,6 @@ function setup() {
 
 echo "Creating tmp dirs and symlinks in .vim"
 mkdir -p $HOME/.config/nvim/tmp/{backup,swap}
-ln -s $HOME/.dotfiles/vim/syntax $HOME/.config/nvim/syntax
 
 setup init.vim "$HOME/.config/nvim/init.vim"
 setup zshrc "$HOME/.zshrc"
