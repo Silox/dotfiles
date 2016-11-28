@@ -3,33 +3,32 @@ set nocompatible
 filetype off
 set rtp+=/usr/local/opt/fzf
 
-" Powerline init
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
 " }}}
 " Bundles {{{
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'scrooloose/nerdtree'
 Plug 'fugitive.vim'
-Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Raimondi/delimitMate'
-Plug 'Valloric/YouCompleteMe'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-obsession'
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 call plug#end()
 
 filetype plugin indent on
+
+call deoplete#enable()
 " }}}
 " Leader {{{
 
@@ -88,6 +87,9 @@ let g:solarized_termtrans=0
 syntax enable
 set background=dark
 colorscheme solarized
+
+let g:airline_theme='powerlineish'
+let g:airline_powerline_fonts = 1
 " }}}
 " Wrapping {{{
 set nowrap

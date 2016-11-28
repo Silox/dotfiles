@@ -19,18 +19,11 @@ function setup() {
     ln -sfn "$DEST/$SRC" "$DST"
 }
 
-echo "Setting up Vundle"
-if [[ -d $HOME/.vim/bundle/vundle ]]; then
-  echo "Vundle already installed"
-else
-  git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
-fi
-
 echo "Creating tmp dirs and symlinks in .vim"
-mkdir -p $HOME/.vim/tmp/{backup,swap}
-ln -s $HOME/.dotfiles/vim/syntax $HOME/.vim/syntax
+mkdir -p $HOME/.config/nvim/tmp/{backup,swap}
+ln -s $HOME/.dotfiles/vim/syntax $HOME/.config/nvim/syntax
 
-setup vimrc "$HOME/.vimrc"
+setup init.vim "$HOME/.config/nvim/init.vim"
 setup zshrc "$HOME/.zshrc"
 setup tmux.conf "$HOME/.tmux.conf"
 setup gitconfig "$HOME/.gitconfig"
@@ -40,6 +33,6 @@ echo "Cloning tmux-powerline into ~/.tmux"
 pip install powerline-status
 
 echo "updating Bundles"
-vim +BundleInstall! +qall
+vim +PlugInstall
 
 reset
