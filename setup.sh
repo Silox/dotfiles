@@ -19,6 +19,10 @@ function setup() {
     ln -sfn "$DEST/$SRC" "$DST"
 }
 
+echo "Installing fzf"
+brew install fzf
+$(brew --prefix)/opt/fzf/install --all
+
 echo "Creating tmp dirs and symlinks in .vim"
 mkdir -p $HOME/.config/nvim/tmp/{backup,swap}
 
@@ -29,7 +33,8 @@ setup gitconfig "$HOME/.gitconfig"
 
 
 echo "Cloning tmux-powerline into ~/.tmux"
-pip install powerline-status
+pip3 install powerline-status
+pip3 install --upgrade neovim
 
 echo "updating Bundles"
 vim +PlugInstall

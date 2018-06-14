@@ -14,21 +14,21 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'scrooloose/nerdtree'
-Plug 'fugitive.vim'
+Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/syntastic'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-obsession'
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+Plug 'w0rp/ale' " linting
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " autocompletion
 call plug#end()
 
 filetype plugin indent on
 
-call deoplete#enable()
+let g:deoplete#enable_at_startup = 1
 " }}}
 " Leader {{{
 
@@ -77,6 +77,8 @@ set splitbelow
 set autoread " auto reload file on change
 
 set scrolloff=8 "keep 8 lines below/above cursor
+
+set clipboard=unnamed
 " }}}
 " Colorscheme {{{
 set t_Co=256
